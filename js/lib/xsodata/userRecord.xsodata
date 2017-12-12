@@ -1,0 +1,13 @@
+service{
+    "UserRecord.User"
+	  as "URUser" navigates ("Addresses" as "URAddress");
+
+	"UserRecord.Address"
+	  as "URAddress";
+
+	association "Addresses" 
+	principal  "URUser"("ID")
+	multiplicity "1" 
+	dependent "URAddress"("URUser.ID") 
+	multiplicity "*";
+}

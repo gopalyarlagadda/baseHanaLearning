@@ -1,0 +1,40 @@
+context UserRecord{
+	type Id			: String(9);
+	type SName		: String(10);
+	type SGender	: String(8);
+	type SStreet	: String(20);
+	type SDate		: LocalDate;
+	type SType		: String(10);
+	
+	Entity User {
+		key ID	: Id;
+		FIRSTNAME	: SName;
+		LASTNAME	: SName;
+		COUNTRY		: SName;
+		GENDER		: SGender;
+		DATEOFBIRTH	: SDate;
+		ADDRESSES	: association[*] to Address on ADDRESSES.ID = ID;
+	} technical configuration {
+		column store;
+	};
+	
+	Entity Address {
+		key ID		: Id;
+		key ADDRESSID	: Id;
+		USER: Association[1] to User on USER.ID = ID;
+		STREET: SStreet;
+		TOWN: SStreet;
+		COUNTRY: SStreet;
+		TYPE: SType;
+	} technical configuration {
+		column store;
+	};
+	define view AddressView as SELECT from Address {
+		ID as "UserId",
+		ADDRESSID as "AddressId",
+		USER.GENDER as "Gender",
+		USER.FIRSTNAME as "FirstName",
+		USER.LASTNAME as "LastName",
+		TOWN as "Town"
+	} with structured privilege check ;
+};

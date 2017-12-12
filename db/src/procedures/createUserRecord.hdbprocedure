@@ -1,0 +1,8 @@
+PROCEDURE "createUserRecord" ( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+	INSERT INTO "UserRecord.User" VALUES ('Luis', 'Inga', 'Spain', 'Male', '1985-07-15', '900000004');
+END

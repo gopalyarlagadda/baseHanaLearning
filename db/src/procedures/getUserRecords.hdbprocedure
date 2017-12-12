@@ -1,0 +1,8 @@
+PROCEDURE "getUserRecords" ( IN i_country VARCHAR(10), 
+							 OUT ex_users "UserRecord.User" )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   READS SQL DATA AS
+BEGIN
+   ex_users = select * from "UserRecord.User" where country = i_country;
+END

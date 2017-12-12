@@ -1,0 +1,61 @@
+{
+	"format_version": 1,
+	"imports": [{
+	"target_table": "UserRecord.User",
+	"source_data": {
+	"data_type": "CSV",
+		"file_name": "user.csv",
+		"has_header": false,
+		"dialect": "HANA",
+		"type_config": {
+		"delimiter": ","
+		}
+	},
+	"import_settings": {
+	"import_columns": [
+		"ID",
+		"FIRSTNAME",
+		"LASTNAME",
+		"COUNTRY",
+		"GENDER",
+		"DATEOFBIRTH"]
+	},
+	"column_mappings": {
+		"ID": 1,
+		"FIRSTNAME": 2,
+		"LASTNAME": 3,
+		"COUNTRY": 4,
+		"GENDER": 5,
+		"DATEOFBIRTH": 6
+		}
+	},
+	{
+	"target_table": "UserRecord.Address",
+	"source_data": {
+		"data_type": "CSV",
+		"file_name": "address.csv",
+		"has_header": false,
+		"dialect": "HANA",
+		"type_config": {
+		"delimiter": ","
+		}
+	},
+	"import_settings": {
+		"import_columns": [
+			"ID",
+			"ADDRESSID",
+			"STREET",
+			"TOWN",
+			"COUNTRY",
+			"TYPE"]
+	},
+	"column_mappings": {
+			"ID": 1,
+			"ADDRESSID": 2,
+			"STREET": 3,
+			"TOWN": 4,
+			"COUNTRY": 5,
+			"TYPE": 6
+		}
+	}]
+	}
